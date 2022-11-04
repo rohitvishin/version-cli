@@ -36,7 +36,7 @@ class Home extends BaseController
             'email' => $this->request->getPost('email'),
             'phone' => $this->request->getPost('phone'),
             'username' => $this->request->getPost('username'),
-            'password' => $this->request->getPost('password'),   
+            'password' => sha1($this->request->getPost('password')),   
         ];
         if ($this->db->table('users')->insert($user)) {
             foreach($this->request->getPost('p_name') as $key=>$product){
